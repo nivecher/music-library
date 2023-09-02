@@ -11,11 +11,15 @@
     </header>
 
     <nav>
-        <a href="/" class="button">Home</a>
-        <a href="/add_song" class="button">Add Song</a>
+        <ul class="nav-tabs">
+            <li><a href="/">Songs</a></li>
+            <li><a href="/artists">Artists</a></li>
+            <li><a href="/albums">Albums</a></li>
+            <li><a href="/genres">Genres</a></li>
+        </ul>
     </nav>    
 
-    <div class="container">
+    <div class="content">
         {% block content %}{% endblock %}
     </div>
 
