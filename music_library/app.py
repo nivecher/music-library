@@ -76,8 +76,19 @@ def genre_details(genre_name):
     # Sort the songs by title (alphabetically)
     sorted_genre_songs = sorted(genre_songs, key=lambda song: song["title"])
 
+    # Extract a list of unique album names associated with the genre
+    genre_albums = list(set(song["album"] for song in sorted_genre_songs))
+
+    # TODO sort by year
+
+    # Sort the albums by title (alphabetically)
+    sorted_genre_albums = sorted(genre_albums)
+
     return render_template(
-        "genre_details.html", genre_name=genre_name, genre_songs=sorted_genre_songs
+        "genre_details.html",
+        genre_name=genre_name,
+        genre_songs=sorted_genre_songs,
+        genre_albums=sorted_genre_albums,
     )
 
 

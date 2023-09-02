@@ -4,6 +4,7 @@
     <h2>Genre Details</h2>
     <h3>{{ genre_name }}</h3>
     
+    <!-- Display Songs -->
     <h4>Songs in {{ genre_name }}</h4>
     <ul class="song-list">
         {% for song in genre_songs %}
@@ -13,6 +14,16 @@
             </li>
         {% endfor %}
     </ul>
-    
+
+    <!-- Display Albums (similar to songs) -->
+    <h4>Albums in {{ genre_name }}</h4>
+    <ul class="album-list">
+        {% for album in genre_albums %}
+            <li class="album-item">
+                <a href="{{ url_for('album_details', album_name=album) }}">{{ album }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
     <a href="/">Back to Song List</a>
 {% endblock %}
