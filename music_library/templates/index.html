@@ -5,9 +5,8 @@
     <ul class="song-list">
         {% for song in songs %}
             <li class="song-item">
-                <a href="{{ url_for('song_details', song_id=loop.index0) }}">
-                    {{ song.title }} by {{ song.artist }}
-                </a>
+                <a href="{{ url_for('song_details', song_id=loop.index0) }}">{{ song.title }}</a>
+                by <a href="{{ url_for('artist_details', artist_name=song.artist) }}">{{ song.artist }}</a>
             </li>
         {% endfor %}
     </ul>

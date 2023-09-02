@@ -1,7 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask_debugtoolbar import DebugToolbarExtension  # Import the DebugToolbarExtension
 import json
 
 app = Flask(__name__)
+
+# Enable Flask Debug Toolbar
+app.config[
+    "SECRET_KEY"
+] = "d1c3b3f066f6dff7de23d1035f34b3ce3198d9022d957b7911a2931d60974ff8"
+app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
+toolbar = DebugToolbarExtension(app)
 
 # Load initial song data from a JSON file
 with open("data/songs.json", "r") as json_file:
@@ -46,14 +54,6 @@ def artist_details(artist_name):
     )
 
 
-@app.route("/album/<string:album_name>")
-def album_details(album_name):
-    album_songs = [song for song in songs if song["album"] == album_name]
-    return render_template(
-        "album_details.html", album_name=album_name, album_songs=album_songs
-    )
-
-
 @app.route("/genre/<string:genre_name>")
 def genre_details(genre_name):
     genre_songs = [song for song in songs if song["genre"] == genre_name]
@@ -68,4 +68,4 @@ def get_songs():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=True)  # Enable the reloader
