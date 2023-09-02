@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Song Details</h2>
+    <div class="song-details">
+        <h3>{{ song.title }} by {{ song.artist }}</h3>
+        <p><strong>Album:</strong> {{ song.album }}</p>
+        <p><strong>Genre:</strong> {{ song.genre }}</p>
+        <a href="/">Back to Song List</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Hotel California",
+        "artist": "The Eagles",
+        "album": null,
+        "genre": null
+    },
+    {
+        "title": "Take It Easy",
+        "artist": "The Eagles",
+        "album": null,
+        "genre": null
+    },
+    {
+        "title": "Life In the Fast Lane",
+        "artist": "The Eagles",
+        "album": null,
+        "genre": null
+    },
+    {
+        "title": "Free Bird",
+        "artist": "Lynyrd Skynyrd",
+        "album": "(Pronounced 'L\u0115h-'n\u00e9rd 'Skin-'n\u00e9rd)",
+        "genre": "Rock"
+    }
+]
