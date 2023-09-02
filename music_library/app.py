@@ -49,8 +49,23 @@ def song_details(song_id):
 @app.route("/artist/<string:artist_name>")
 def artist_details(artist_name):
     artist_songs = [song for song in songs if song["artist"] == artist_name]
+
+    # Extract a list of unique album names associated with the artist
+    artist_albums = list(set(song["album"] for song in artist_songs))
+
     return render_template(
-        "artist_details.html", artist_name=artist_name, artist_songs=artist_songs
+        "artist_details.html",
+        artist_name=artist_name,
+        artist_songs=artist_songs,
+        artist_albums=artist_albums,  # Pass the list of albums
+    )
+
+
+@app.route("/album/<string:album_name>")
+def album_details(album_name):
+    album_songs = [song for song in songs if song["album"] == album_name]
+    return render_template(
+        "album_details.html", album_name=album_name, album_songs=album_songs
     )
 
 
