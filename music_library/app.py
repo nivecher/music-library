@@ -72,8 +72,12 @@ def album_details(album_name):
 @app.route("/genre/<string:genre_name>")
 def genre_details(genre_name):
     genre_songs = [song for song in songs if song["genre"] == genre_name]
+
+    # Sort the songs by title (alphabetically)
+    sorted_genre_songs = sorted(genre_songs, key=lambda song: song["title"])
+
     return render_template(
-        "genre_details.html", genre_name=genre_name, genre_songs=genre_songs
+        "genre_details.html", genre_name=genre_name, genre_songs=sorted_genre_songs
     )
 
 

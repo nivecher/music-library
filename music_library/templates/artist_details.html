@@ -8,9 +8,9 @@
     <ul class="song-list">
         {% for song in artist_songs %}
         <li class="song-item">
-            {{ song.title }} - 
+            <b>{{ song.title }}</b> - 
             <a href="{{ url_for('album_details', album_name=song.album) }}">{{ song.album }}</a>
-            ({{ song.genre }})
+            (<a href="{{ url_for('genre_details', genre_name=song.genre) }}">{{ song.genre }}</a>)
         </li>
         {% endfor %}
     </ul>
