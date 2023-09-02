@@ -139,3 +139,35 @@ footer {
   padding: 20px;
   margin-top: 20px;
 }
+
+/* Enhance button visibility */
+button,
+input[type="submit"] {
+  background-color: #007BFF; /* Blue background color */
+  color: #fff; /* White text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Example for navigation buttons */
+nav a.button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 3px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+nav a.button:hover {
+  background-color: #555;
+}

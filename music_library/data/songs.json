@@ -28,5 +28,11 @@
         "artist": "The Eagles",
         "album": "On the Border",
         "genre": "Rock"
+    },
+    {
+        "title": "Amie",
+        "artist": "Pure Prairie League",
+        "album": "Bustin' Out",
+        "genre": "Rock"
     }
 ]
