@@ -2,25 +2,31 @@
     {
         "title": "Hotel California",
         "artist": "The Eagles",
-        "album": null,
-        "genre": null
+        "album": "Hotel California",
+        "genre": "Rock"
     },
     {
         "title": "Take It Easy",
         "artist": "The Eagles",
-        "album": null,
-        "genre": null
+        "album": "Eagles",
+        "genre": "Rock"
     },
     {
         "title": "Life In the Fast Lane",
         "artist": "The Eagles",
-        "album": null,
-        "genre": null
+        "album": "Hotel California",
+        "genre": "Rock"
     },
     {
         "title": "Free Bird",
         "artist": "Lynyrd Skynyrd",
         "album": "(Pronounced 'L\u0115h-'n\u00e9rd 'Skin-'n\u00e9rd)",
+        "genre": "Rock"
+    },
+    {
+        "title": "Already Gone",
+        "artist": "The Eagles",
+        "album": "On the Border",
         "genre": "Rock"
     }
 ]

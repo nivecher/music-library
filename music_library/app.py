@@ -12,8 +12,8 @@ with open("data/songs.json", "r") as json_file:
 
 @app.route("/")
 def index():
-    # TODO add current_year, etc. to enrich base
-    return render_template("index.html", songs=songs)
+    sorted_songs = sorted(songs, key=lambda x: x["title"])
+    return render_template("index.html", songs=sorted_songs)
 
 
 @app.route("/add_song", methods=["GET", "POST"])
