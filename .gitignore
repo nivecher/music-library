@@ -64,6 +64,7 @@ db.sqlite3-journal
 # Flask stuff:
 instance/
 .webassets-cache
+migrations/
 
 # Scrapy stuff:
 .scrapy
@@ -128,7 +129,7 @@ ENV/
 env.bak/
 venv.bak/
 
-# Spyder project settings
+# Spyder project
 .spyderproject
 .spyproject
 

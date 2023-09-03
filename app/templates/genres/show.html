@@ -9,8 +9,8 @@
     <ul class="song-list">
         {% for song in genre_songs %}
             <li class="song-item">
-                <a href="{{ url_for('song_details', song_id=loop.index0) }}">{{ song.title }}</a>
-                by <a href="{{ url_for('artist_details', artist_name=song.artist) }}">{{ song.artist }}</a>
+                <a href="{{ url_for('songs.show', song_id=loop.index0) }}">{{ song.title }}</a>
+                by <a href="{{ url_for('artists.show', artist_name=song.artist) }}">{{ song.artist }}</a>
             </li>
         {% endfor %}
     </ul>
@@ -20,10 +20,10 @@
     <ul class="album-list">
         {% for album in genre_albums %}
             <li class="album-item">
-                <a href="{{ url_for('album_details', album_name=album) }}">{{ album }}</a>
+                <a href="{{ url_for('albums.show', id=album.id) }}">{{ album.title }}</a>
             </li>
         {% endfor %}
     </ul>
     <br>
-    <a href="/">Back to Song List</a>
+    <a href="{{ url_for('genres.index') }}">Back to Genre List</a>
 {% endblock %}

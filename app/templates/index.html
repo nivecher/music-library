@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Music Library Summary</h1>
+
+    <div class="summary">
+        <h2>Library Overview</h2>
+        <p>Total Songs:
+            <a href="{{ url_for('songs.index') }}">{{ num_songs }}</a>
+        </p>
+        <p>Total Artists:
+            <a href="{{ url_for('artists.index') }}">{{ num_artists }}</a>
+        </p>
+        <p>Total Albums: {{ num_albums }}</p>
+        <p>Total Genres: {{ num_genres }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Recent Songs</h2>
+        <ul>
+            {% for song in recent_songs %}
+                <li><a href="{{ url_for('songs.show', id=song.id) }}">{{ song.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Top Artists</h2>
+        <ul>
+            {% for artist in top_artists %}
+                <li><a href="{{ url_for('artists.show', id=artist.id) }}">{{ artist.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Popular Genres</h2>
+        <ul>
+            {% for genre in popular_genres %}
+                <li>{{ genre.value }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <!-- Add more sections as needed for albums, playlists, etc. -->
+
+    <a href="{{ url_for('songs.index') }}">View All Songs</a>
+{% endblock %}

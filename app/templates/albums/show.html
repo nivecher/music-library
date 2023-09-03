@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Album Details</h1>
+    
+    <div class="album-details">
+        <h2>{{ album.title }}</h2>
+        
+        <div class="album-info">
+            <p><strong>Title:</strong> {{ album.title }}</p>
+            <p><strong>Artist:</strong>
+                <a href="{{ url_for('artists.show', id=album.artist.id) }}">{{ album.artist.name }}</a></p>
+            <p><strong>Genre:</strong>
+                <a href="{{ url_for('genres.show', genre_name=genre.value) }}">{{ album.genre.value }}</a></p>
+            <p><strong>Release Year:</strong> {{ album.release_year }}</p>
+        </div>
+        
+        <h2>Songs</h2>
+        <ul>
+            {% for song in album.songs %}
+                <li>
+                    <a href="{{ url_for('songs.show', id=song.id) }}">{{ song.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <a href="{{ url_for('albums.index') }}">Back to Albums</a>
+{% endblock %}

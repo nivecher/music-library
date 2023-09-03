@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Song - My Music Library{% endblock %}
+
+{% block content %}
+    <h1>Add New Song</h1>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flash-messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('songs.create_song') }}">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <br>
+
+        <label for="artist">Artist:</label>
+        <input type="text" id="artist" name="artist" required>
+        <br>
+
+        <label for="album">Album:</label>
+        <input type="text" id="album" name="album" required>
+        <br>
+
+        <label for="genre">Genre:</label>
+        <select id="genre" name="genre" required>
+            <option value="" disabled selected>Select Genre</option>
+            {% for genre in genres %}
+            <option value="{{ genre.value }}">{{ genre.value }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <input type="submit" value="Add Song">
+    </form>
+
+    <p><a href="{{ url_for('songs.index') }}">Back to Song List</a></p>
+{% endblock %}

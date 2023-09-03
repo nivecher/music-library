@@ -12,10 +12,11 @@
 
     <nav>
         <ul class="nav-tabs">
-            <li><a href="/">Songs</a></li>
-            <li><a href="/artists">Artists</a></li>
-            <li><a href="/albums">Albums</a></li>
-            <li><a href="/genres">Genres</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="{{ url_for('songs.index') }}">Songs</a></li>
+            <li><a href="{{ url_for('artists.index') }}">Artists</a></li>
+            <li><a href="{{ url_for('albums.index') }}">Albums</a></li>
+            <li><a href="{{ url_for('genres.index') }}">Genres</a></li>
         </ul>
     </nav>    
 

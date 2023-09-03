@@ -3,9 +3,9 @@
 {% block content %}
     <h2>Genres</h2>
     <ul class="genre-list">
-        {% for genre in genre_names %}
+        {% for genre in genres %}
             <li class="genre-item">
-                <a href="{{ url_for('genre_details', genre_name=genre) }}">{{ genre }}</a>
+                <a href="{{ url_for('genres.show', genre_name=genre.value) }}">{{ genre.value }}</a>
             </li>
         {% endfor %}
     </ul>

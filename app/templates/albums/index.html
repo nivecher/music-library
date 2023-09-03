@@ -3,9 +3,9 @@
 {% block content %}
     <h2>Albums</h2>
     <ul class="album-list">
-        {% for album in album_names %}
+        {% for album in albums %}
             <li class="album-item">
-                <a href="{{ url_for('album_details', album_name=album) }}">{{ album }}</a>
+                <a href="{{ url_for('albums.show', id=album.id) }}">{{ album.title }}</a>
             </li>
         {% endfor %}
     </ul>

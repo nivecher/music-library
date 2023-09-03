@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Song Details</h1>
+
+    <div>
+        <strong>Title:</strong> {{ song.title }}
+    </div>
+
+    <div>
+        <strong>Artist:</strong>
+        <a href="{{ url_for('artists.show', id=song.artist.id) }}">
+            {{ song.artist.name if song.artist else 'N/A' }}
+        </a>
+    </div>
+
+    <div>
+        <strong>Album:</strong>
+        <a href="{{ url_for('albums.show', id=song.album.id) }}">
+            {{ song.album.title if song.album else 'N/A' }}
+        </a>
+    </div>
+
+    <div>
+        <strong>Genre:</strong>
+        <a href="{{ url_for('genres.show', genre_name=song.genre.value) }}">
+            {{ song.genre.value if song.genre else 'N/A' }}
+        </a>
+        
+    </div>
+
+    <div>
+        <strong>Duration:</strong> {{ song.duration if song.duration else 'N/A' }}
+    </div>
+
+    <br>
+    <a href="{{ url_for('songs.edit', id=song.id) }}">Edit Song</a>
+    <br>
+    <a href="{{ url_for('songs.delete', id=song.id) }}">Dekete Song</a>
+    <br>
+    <a href="{{ url_for('songs.index') }}">Back to Song List</a>
+{% endblock %}
