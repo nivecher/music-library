@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, g, render_template, request, redirect, url_for, flash
 from app import db
 from app.models.song import Song
 from app.models.artist import Artist
@@ -104,7 +104,8 @@ def update_song(id):
     title = request.form.get("title")
     artist_id = int(request.form.get("artist_id"))
     album_id = int(request.form.get("album_id"))
-    genre = request.form.get("genre")
+    genre_name = request.form.get("genre")
+    genre = GenreEnum.get_genre_enum(genre_name)
     duration = request.form.get("duration")
 
     # Update song details
@@ -121,7 +122,7 @@ def update_song(id):
     return redirect(url_for("songs.index"))
 
 
-@songs_bp.route("/<int:id>/delete", methods=["DELETE"])
+@songs_bp.route("/delete/<int:id>", methods=["POST"])
 def delete(id):
     song = Song.query.get(id)
 
