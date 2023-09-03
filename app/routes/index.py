@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint
-from app import app, db
+from app import db
 from app.models.song import Song
 from app.models.artist import Artist
 from app.models.album import Album
@@ -8,7 +8,7 @@ from app.models.genre import GenreEnum
 index_bp = Blueprint("index", __name__)
 
 
-@app.route("/")
+@index_bp.route("/")
 def index():
     # Count the number of records for each model
     num_songs = db.session.query(Song).count()
