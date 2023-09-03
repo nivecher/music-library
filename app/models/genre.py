@@ -21,6 +21,10 @@ class GenreEnum(Enum):
     ROCK = "Rock"
     WORLD = "Worldwide"
 
+    @classmethod
+    def list(cls):
+        return list(map(lambda c: c.value, cls))
+
     def get_genre_enum(genre_string):
         try:
             genre_enum = GenreEnum(genre_string)

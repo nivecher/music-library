@@ -11,7 +11,7 @@
             <p><strong>Artist:</strong>
                 <a href="{{ url_for('artists.show', id=album.artist.id) }}">{{ album.artist.name }}</a></p>
             <p><strong>Genre:</strong>
-                <a href="{{ url_for('genres.show', genre_name=genre.value) }}">{{ album.genre.value }}</a></p>
+                <a href="{{ url_for('genres.show', genre_name=album.genre.value) }}">{{ album.genre.value }}</a></p>
             <p><strong>Release Year:</strong> {{ album.release_year }}</p>
         </div>
         

@@ -35,8 +35,8 @@
             <select class="form-control" id="genre" name="genre" required>
                 <option value="" disabled>Select a genre</option>
                 {% for genre in genres %}
-                <option value="{{ genre }}" {% if genre == song.genre %}selected{% endif %}>
-                    {{ genre }}
+                <option value="{{ genre }}" {% if genre == song.genre.value %}selected{% endif %}>
+                    {{ genre.value }}
                 </option>
                 {% endfor %}
             </select>

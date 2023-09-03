@@ -79,6 +79,7 @@ def create_song():
 @songs_bp.route("/<int:id>/edit", methods=["GET"])
 def edit(id):
     song = Song.query.get(id)
+    artists = db.session.query(Artist).order_by(Artist.name).all()
     albums = db.session.query(Album).order_by(Album.title).all()
     if song is None:
         flash("Song not found", "danger")
@@ -87,13 +88,14 @@ def edit(id):
     return render_template(
         "songs/edit.html",
         song=song,
+        artists=artists,
         albums=albums,
-        genres=GenreEnum,
+        genres=GenreEnum.list(),
     )
 
 
 # Show a form to updating an existing song (Update - U in CRUD)
-@songs_bp.route("/songs/edit/<int:id>", methods=["GET", "POST"])
+@songs_bp.route("/<int:id>/edit", methods=["POST"])
 def update_song(id):
     # Retrieve the song by its ID
     song = Song.query.get_or_404(id)

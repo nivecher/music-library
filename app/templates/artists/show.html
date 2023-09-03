@@ -32,6 +32,8 @@
             {% endfor %}
         </ul>
     </div>
-    
+    <br>
+    <a href="{{ url_for('artists.edit', id=artist.id) }}" class="btn btn-primary">Edit</a>
+    <br>
     <a href="{{ url_for('artists.index') }}">Back to Artists</a>
 {% endblock %}
