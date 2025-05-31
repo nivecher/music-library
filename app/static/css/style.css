@@ -1,4 +1,33 @@
-/* Reset some default styles */
+/* =========================
+   CSS Variables for easy theming (Standard, Subtle)
+   ========================= */
+:root {
+  --primary-bg: #f7f7fa;
+  --primary-font: 'Segoe UI', 'Arial', sans-serif;
+  --header-bg: #2d3a4a;
+  --header-color: #fff;
+  --accent: #1976d2;
+  --accent-dark: #115293;
+  --button-bg: #1976d2;
+  --button-hover-bg: #115293;
+  --button-disabled-bg: #bdbdbd;
+  --button-disabled-color: #f7f7fa;
+  --nav-bg: #2d3a4a;
+  --nav-color: #fff;
+  --nav-link-bg: #e3e7ed;
+  --nav-link-hover-bg: #1976d2;
+  --nav-link-hover-color: #fff;
+  --border-color: #d1d5db;
+  --card-bg: #fff;
+  --card-alt-bg: #f3f6fa;
+  --text-main: #222;
+  --text-light: #fff;
+  --shadow: 0 2px 8px rgba(44,62,80,0.06);
+}
+
+/* =========================
+   Reset and Base Styles
+   ========================= */
 body,
 h1,
 h2,
@@ -9,207 +38,375 @@ p {
   padding: 0;
 }
 
-/* Set background color and fonts */
 body {
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
+  background: var(--primary-bg);
+  font-family: var(--primary-font);
+  color: var(--text-main);
+  min-height: 100vh;
 }
 
-/* Header styles */
+/* =========================
+   Utility Classes
+   ========================= */
+.text-center { text-align: center; }
+.mt-2 { margin-top: 2rem; }
+.mb-2 { margin-bottom: 2rem; }
+
+/* =========================
+   Header
+   ========================= */
 header {
-  background-color: #333;
-  color: #fff;
+  background: var(--header-bg);
+  color: var(--header-color);
   text-align: center;
-  padding: 20px;
+  padding: 2rem 1rem 1rem 1rem;
+  box-shadow: var(--shadow);
+  font-size: 2rem;
+  font-weight: 600;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
-/* Main container styles */
+/* =========================
+   Main Container
+   ========================= */
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 48rem;
+  margin: 2rem auto;
+  padding: 2rem 1.5rem 2.5rem 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
 }
 
-/* Navigation styles */
+/* =========================
+   Navigation
+   ========================= */
 nav {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 1.2rem;
+  background: var(--nav-bg);
+  color: var(--nav-color);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  padding: 0.5rem 0;
 }
 
 nav a {
   text-decoration: none;
-  color: #333;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 3px;
-  background-color: #eee;
-  transition: background-color 0.3s ease;
+  color: var(--nav-bg);
+  padding: 0.6rem 1.5rem;
+  margin: 0.3rem 0.3rem;
+  border-radius: 1.5rem;
+  background: var(--nav-link-bg);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s, outline 0.2s, box-shadow 0.2s;
+  display: inline-block;
 }
 
-nav a:hover {
-  background-color: #333;
-  color: #fff;
+nav a:hover,
+nav a:focus {
+  background: var(--nav-link-hover-bg);
+  color: var(--nav-link-hover-color);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-/* Song list styles */
+/* =========================
+   Song List & Cards
+   ========================= */
 .song-list {
   list-style: none;
   padding: 0;
 }
 
 .song-item {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
+  background: var(--card-alt-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.7rem;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.04);
+  font-size: 1rem;
 }
 
-/* Song details styles */
-.song-details {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 20px;
-  margin-top: 20px;
+.song-item a {
+  color: var(--accent-dark);
+  text-decoration: underline dotted;
+  transition: color 0.2s;
 }
 
-/* Form styles */
+.song-item a:hover {
+  color: var(--accent);
+}
+
+/* =========================
+   Song/Album/Artist Details
+   ========================= */
+.song-details,
+.artist-details,
+.album-details,
+.genre-details {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.7rem;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  margin-top: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+/* =========================
+   Forms
+   ========================= */
 form {
-  margin-top: 20px;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 500;
+  color: var(--header-bg);
+  margin-bottom: 0.1rem;
+  letter-spacing: 0.2px;
 }
 
-form input[type="text"] {
+form input[type="text"],
+form select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  padding: 0.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  background: #f5f5f5;
+  transition: border 0.2s;
+  margin-bottom: 0;
 }
 
-form input[type="submit"] {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
+form input[type="text"]:focus,
+form select:focus {
+  border: 1.5px solid var(--accent);
+  outline: none;
 }
 
-form input[type="submit"]:hover {
-  background-color: #555;
+.form-actions {
+  width: 100%;
+  display: flex;
+  gap: 0.7rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
 }
 
-/* Footer styles */
-footer {
-  text-align: center;
-  margin-top: 20px;
-  padding: 10px 0;
-  background-color: #333;
-  color: #fff;
-  font-size: 14px;
+.form-actions button,
+.form-actions input[type="submit"],
+.form-actions a.btn {
+  margin-bottom: 0;
+  min-width: 100px;
 }
 
-/* Additional music-themed styles can be added as needed */
-
-/* Example styles for artist and album pages */
-.artist-details,
-.album-details {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-/* Example styles for genre page */
-.genre-details {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-/* Enhance button visibility */
+/* =========================
+   Buttons
+   ========================= */
 button,
 input[type="submit"] {
-  background-color: #007BFF; /* Blue background color */
-  color: #fff; /* White text color */
-  padding: 10px 20px;
+  background: var(--button-bg);
+  color: var(--text-light);
+  padding: 0.6rem 1.5rem;
   border: none;
-  border-radius: 3px;
+  border-radius: 1.5rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.04);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 button:hover,
-input[type="submit"]:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-}
-
-/* Example for navigation buttons */
-nav a.button {
-  background-color: #333;
+input[type="submit"]:hover,
+button:focus,
+input[type="submit"]:focus {
+  background: var(--button-hover-bg);
   color: #fff;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 3px;
-  text-decoration: none;
-  display: inline-block;
+  box-shadow: 0 2px 8px rgba(25,118,210,0.10);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-nav a.button:hover {
-  background-color: #555;
+button:disabled,
+input[type="submit"]:disabled {
+  background: var(--button-disabled-bg);
+  color: var(--button-disabled-color);
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
-/* Styles for the album list */
+/* =========================
+   Footer
+   ========================= */
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  background: var(--header-bg);
+  color: var(--header-color);
+  font-size: 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+/* =========================
+   Album List
+   ========================= */
 .album-list {
   list-style: none;
   padding: 0;
 }
 
-/* Styles for each album item */
 .album-item {
-  margin: 5px 0;
-  font-size: 16px;
-  color: #333;
+  margin: 0.4rem 0;
+  font-size: 1rem;
+  color: var(--header-bg);
+  font-weight: 500;
 }
 
-/* Styles for the navigation bar */
-nav {
-  background-color: #333;
-  color: white;
-}
-
+/* =========================
+   Navigation Tabs
+   ========================= */
 .nav-tabs {
   list-style-type: none;
-  padding: 10px;
+  padding: 0.7rem;
   display: flex;
+  background: none;
+  justify-content: center;
 }
 
 .nav-tabs li {
-  margin-right: 20px;
+  margin-right: 1.2rem;
 }
 
 .nav-tabs a {
   text-decoration: none;
-  color: white;
-  background-color: lightslategray;
-  padding: 5px 10px;
+  color: var(--nav-bg);
+  background: var(--nav-link-bg);
+  padding: 0.4rem 1rem;
   border: 1px solid transparent;
-  transition: border-color 0.3s;
+  border-radius: 1.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s, border-color 0.2s;
 }
 
-.nav-tabs a:hover {
-  border-color: white;
+.nav-tabs a:hover,
+.nav-tabs a:focus {
+  background: var(--nav-link-hover-bg);
+  color: var(--nav-link-hover-color);
+  border-color: var(--header-color);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =========================
+   Responsive Design
+   ========================= */
+@media (max-width: 600px) {
+  body,
+  .container,
+  .artist-details,
+  .album-details,
+  .genre-details,
+  .song-details {
+    padding: 1rem;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: 100%;
+  }
+  header,
+  footer {
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 0;
+  }
+  nav {
+    padding: 0;
+    border-radius: 0;
+  }
+  .nav-tabs {
+    flex-direction: column;
+    padding: 0;
+  }
+  .nav-tabs li {
+    margin: 0 0 1rem 0;
+  }
+  .nav-tabs a {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  h1,
+  h2 {
+    font-size: 1.2em;
+  }
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+    width: 100%;
+  }
+  th,
+  td {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5rem 0.25rem;
+    text-align: left;
+  }
+  tr {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  form input[type="text"],
+  form select {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+  button,
+  input[type="submit"] {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+  .form-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  .dashboard-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .dashboard-card {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* =========================
+   Accessibility: Focus Styles
+   ========================= */
+:focus {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 2px;
 }

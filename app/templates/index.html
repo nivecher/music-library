@@ -1,48 +1,53 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Music Library Summary</h1>
-
-    <div class="summary">
-        <h2>Library Overview</h2>
-        <p>Total Songs:
-            <a href="{{ url_for('songs.index') }}">{{ num_songs }}</a>
-        </p>
-        <p>Total Artists:
-            <a href="{{ url_for('artists.index') }}">{{ num_artists }}</a>
-        </p>
-        <p>Total Albums: {{ num_albums }}</p>
-        <p>Total Genres: {{ num_genres }}</p>
+<div class="dashboard">
+    <h1 class="text-center">Welcome to Your Music Library</h1>
+    <div class="dashboard-cards">
+        <div class="dashboard-card">
+            <h3>Total Songs</h3>
+            <a href="{{ url_for('songs.index') }}" class="dashboard-link">{{ num_songs }}</a>
+        </div>
+        <div class="dashboard-card">
+            <h3>Total Artists</h3>
+            <a href="{{ url_for('artists.index') }}" class="dashboard-link">{{ num_artists }}</a>
+        </div>
+        <div class="dashboard-card">
+            <h3>Total Albums</h3>
+            <span>{{ num_albums }}</span>
+        </div>
+        <div class="dashboard-card">
+            <h3>Total Genres</h3>
+            <span>{{ num_genres }}</span>
+        </div>
     </div>
-
-    <div class="section">
+    <div class="dashboard-section">
         <h2>Recent Songs</h2>
-        <ul>
+        <ul class="dashboard-list">
             {% for song in recent_songs %}
                 <li><a href="{{ url_for('songs.show', id=song.id) }}">{{ song.title }}</a></li>
             {% endfor %}
         </ul>
     </div>
-
-    <div class="section">
+    <div class="dashboard-section">
         <h2>Top Artists</h2>
-        <ul>
+        <ul class="dashboard-list">
             {% for artist in top_artists %}
                 <li><a href="{{ url_for('artists.show', id=artist.id) }}">{{ artist.name }}</a></li>
             {% endfor %}
         </ul>
     </div>
-
-    <div class="section">
+    <div class="dashboard-section">
         <h2>Popular Genres</h2>
-        <ul>
+        <ul class="dashboard-list">
             {% for genre in popular_genres %}
                 <li>{{ genre.value }}</li>
             {% endfor %}
         </ul>
     </div>
-    
-    <!-- Add more sections as needed for albums, playlists, etc. -->
-
-    <a href="{{ url_for('songs.index') }}">View All Songs</a>
+    <div class="form-actions" style="margin-top:2rem;">
+        <a href="{{ url_for('songs.create') }}" class="btn btn-success">Add New Song</a>
+        <a href="{{ url_for('songs.index') }}" class="btn btn-primary">View All Songs</a>
+    </div>
+</div>
 {% endblock %}

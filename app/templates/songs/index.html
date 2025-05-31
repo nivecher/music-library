@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Songs</h2>
+    <h2 class="text-center">Songs</h2>
+    <div class="table-responsive">
     <table id="songs-table" class="display">
         <thead>
             <tr>
                 <th>Title</th>
                 <th>Artist</th>
                 <th>Album</th>
-                <th>Duration</th>
                 <th>Genre</th>
+                <th>Duration</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -17,20 +18,14 @@
             {% for song in songs %}
             <tr>
                 <td>{{ song.title }}</td>
-                <td>
-                    <a href="{{ url_for('artists.show', id=song.artist.id) }}">{{ song.artist.name }}</a>
-                </td>
-                <td>
-                    <a href="{{ url_for('albums.show', id=song.album.id) }}">{{ song.album.title }}</a>
-                </td>
-                <td>
-                    <a href="{{ url_for('genres.show', genre_name=song.genre.value) }}">{{ song.genre.value }}</a>
-                </td>
+                <td><a href="{{ url_for('artists.show', id=song.artist.id) }}">{{ song.artist.name }}</a></td>
+                <td><a href="{{ url_for('albums.show', id=song.album.id) }}">{{ song.album.title }}</a></td>
+                <td><a href="{{ url_for('genres.show', genre_name=song.genre.value) }}">{{ song.genre.value }}</a></td>
                 <td>{{ song.duration }}</td>
-                <td>
+                <td class="table-actions">
                     <a href="{{ url_for('songs.show', id=song.id) }}" class="btn btn-primary">View</a>
                     <a href="{{ url_for('songs.edit', id=song.id) }}" class="btn btn-warning">Edit</a>
-                    <form method="POST" action="{{ url_for('songs.delete', id=song.id) }}" onsubmit="return confirm('Are you sure you want to delete this song?')">
+                    <form method="POST" action="{{ url_for('songs.delete', id=song.id) }}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this song?')">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
@@ -39,21 +34,19 @@
             {% endfor %}
         </tbody>
     </table>
-    <form method="GET" action="{{ url_for('songs.create') }}">
-        <button type="submit" class="btn">Add Song</button>
-    </form>
-
+    </div>
+    <div class="form-actions" style="margin-top:1.5rem;">
+        <a href="{{ url_for('songs.create') }}" class="btn btn-success">Add Song</a>
+    </div>
     <script>
         $(document).ready(function () {
-            // Initialize DataTable
             $('#songs-table').DataTable({
                 paging: true,
                 searching: true,
                 ordering: true,
                 info: false,
-                order: [[0, 'asc']], // Sort by the first column (Title) in ascending order by default
+                order: [[0, 'asc']],
             });
         });
     </script>
-
 {% endblock %}
